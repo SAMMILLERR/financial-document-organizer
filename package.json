@@ -17,13 +17,20 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:integration": "jest --testPathPattern=integration.spec.ts",
+    "test:load": "jest --config ./test/jest-load.json",
+    "test:performance": "jest --config ./test/jest-performance.json",
+    "test:all": "npm run test && npm run test:integration && npm run test:e2e",
+    "test:full": "npm run test:all && npm run test:load && npm run test:performance"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "adm-zip": "^0.5.16",
+    "axios": "^1.11.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
     "dotenv": "^17.2.1",
@@ -38,6 +45,7 @@
     "@nestjs/cli": "^11.0.0",
     "@nestjs/schematics": "^11.0.0",
     "@nestjs/testing": "^11.0.1",
+    "@types/adm-zip": "^0.5.7",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.10.7",
@@ -72,6 +80,12 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^src/(.*)$": "<rootDir>/$1"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/../test/setup-unit.ts"
+    ]
   }
 }

@@ -10,4 +10,5 @@ export default registerAs('config', () => ({
     driveFolderId: process.env.GOOGLE_DRIVE_FOLDER_ID,
   },
   tokenDbPath: process.env.TOKEN_DB_PATH,
+  apiKey: process.env.API_KEY || 'your-default-api-key',
 }));

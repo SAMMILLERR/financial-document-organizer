@@ -8,6 +8,7 @@ import { GmailModule } from './gmail/gmail.module';
 import { DriveModule } from './drive/drive.module';
 import { SheetsModule } from './sheets/sheets.module';
 import { ScanModule } from './scan/scan.module';
+import { FileProcessorModule } from './file-processor/file-processor.module';
 
 
 @Module({
@@ -21,6 +22,7 @@ import { ScanModule } from './scan/scan.module';
     DriveModule,
     SheetsModule,
     ScanModule,
+    FileProcessorModule,
   ],
   controllers: [AppController],
   providers: [AppService],
